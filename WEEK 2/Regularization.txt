@@ -1,0 +1,6 @@
+From my understanding of regulariztion (at least from watching the videos), this helps us calculate the XTX_inv when it would not exist naturally. When there are duplicates in the columns, there would be no inverse (because its determinant would be zero). In algebra, it is termed "one column is a linear  combination of another column". 
+In our example, there were large numbers because the difference between columns were very minute (0.000000th). 
+
+This caused the overpouring of the numbers. Adding a number (r) to the diagonal of X helps stop(eliminate) the over pouring of X. The higher the number (r) added, the more XTX_inv is under control. This is because the higher the number, the chance that two columns in X are similar reduces.  
+
+When we added more features (mostly categorical variables), we noticed that our weights were too large, regularization helped control that.
