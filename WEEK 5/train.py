@@ -108,8 +108,9 @@ for train_idx, val_idx in kfold.split(df_full_train):
     auc = roc_auc_score(y_val, y_pred)
     scores.append(auc)
 
-    print('auc on fold {fold} is {auc}')
+    print(f'auc on fold {fold} is {auc}')
     fold = fold + 1
+
 
 print("validation results:")
 print('C=%s %.3f +- %.3f' % (C, np.mean(scores), np.std(scores)))
