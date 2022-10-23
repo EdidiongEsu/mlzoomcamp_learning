@@ -23,6 +23,7 @@ def classify(application_data):
 
     if result > 0.5:
         return {"status": "Declined"}
-    elseif result > 0.25:
+    elif result > 0.2:
+        return {"status": 'Maybe'}
+    else:
         return {"status": 'Approved'}
-    return {"status": 'Approved'}
