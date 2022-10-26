@@ -1,0 +1,15 @@
+After creating the model and saving it.
+A model ref takes in the created tag and it pulls in all the associated metadata. For every saved model, a new tag is created.
+
+The runner is bentoml abstraction for the model. The abstraction allows to scale the model seperate from the rest of the service.
+
+A swagger UI is automatically created based off teh open API spec ( atandard way of describing APIS).
+
+High Performance serving.
+We used Locust to send trafiic to our web service. With Locust, we specify the number of Users and the spawn rate (how fast shoud the users be started) then test the service.
+Without Async await optimization, everytime a request comes in, it services the request before getting to the next (like in a chronlogical sequence.) Async allows for the requests to be serviced in a parallel manner.
+
+Another optimiztion
+WHen you start a service, you are creating one process. One CPU works on one process. To optimize this, you need to have multiple processes with each of them working in Parallel. In ML, traditional web scaling has it's cons. One of them is that if your model is big enough, You can not put it into memory cuz of space issues. If you have one model, it is much more efficient to send multiple inputs to that model in one chunk. If we can combine into batches of rows and sent to that model.
+
+ bentoml serve means we need more than one process
