@@ -19,7 +19,7 @@ async def classify(application_data):
     result = prediction[0]
 
     if result > 0.5:
-        return {
+        return { 
             "status": "DECLINED"
         }
     elif result > 0.25:
