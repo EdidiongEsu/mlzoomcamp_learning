@@ -39,6 +39,47 @@ It factors in our unique and proprietary predictions of how long a user will rem
 | churn_risk score             | Represents the churn risk score that 0 or 1                              |
 
 
+## How to run bentoml service
+To serve bentoml locally:
+
+Use the code to run bento locally:
+`bentoml serve service.py:svc`
+
+## How to deploy
+Use
+`bentoml build`
 
 
-  
+## deploying the prediction service 
+`bentoml containerize decision_tree:latest`
+
+### run serve shows next
+`docker run -it --rm -p 3000:3000 decision_tree:iugbmmc55opxvshc serve --production`
+
+## High Performance serving: Locust
+Run
+`bentoml serve --production` and `locust -H http://localhost:3000` simultaneously in differently terminals. The former comes first.
+
+## Deploy to heroku
+Download heroku cli through this link:
+
+https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
+
+and then open command line to type `heroku login -i`. Input your credentials. 
+Login to the heroku container by typing
+`heroku container:login` in your terminal.
+
+create app by using `heroku create app_name` for example `heroku create decisionclassifier`
+
+change directory to where the environment in the bentoml file is. To view the path type `bentoml list -o json` in terminal.
+
+```python
+$ bentoml list -o json[
+  {
+    "tag": "decision_tree:iugbmmc55opxvshc",
+    "path": 
+"~\\bentoml\\bentos\\decision_tree\\iugbmmc55opxvshc",
+    "size": "704.66 KiB",
+    "creation_time": "2022-11-06 16:55:35"
+  }
+```
