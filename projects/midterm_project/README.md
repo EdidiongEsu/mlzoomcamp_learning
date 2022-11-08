@@ -3,6 +3,7 @@
 Source Data : https://www.kaggle.com/datasets/arashnic/hr-analytics-job-change-of-data-scientists?taskId=3015
 
 ## Description of Data
+-----------------------
 Churn rate is a marketing metric that describes the number of customers who leave a business over a specific time period. . Every user is assigned a prediction value that estimates their state of churn at any given time. This value is based on:
 
 User demographic information
@@ -11,6 +12,8 @@ Historical purchase data among other information
 It factors in our unique and proprietary predictions of how long a user will remain a customer. This score is updated every day for all users who have a minimum of one conversion. 
 
 ## Features
+------------
+
 | Column name                  | Description                                                              |
 | ---------------------------- | ------------------------------------------------------------------------ |
 | customer_id                  | Represents the unique identification number of a customer                |
@@ -38,12 +41,34 @@ It factors in our unique and proprietary predictions of how long a user will rem
 | feedback                     | Represents the feedback provided by a customer                           |
 | churn_risk score             | Represents the churn risk score that 0 or 1                              |
 
+## WHat the main files contain
+  -----------------------
+`bentofile.yaml`:This contains the requirements for this project
+`service.py`: This contains the code used to create and serve bentoml. Where service is created.
+`Data Folder`: Contains the data used in the project.
+`midterm_project.ipynb`: This contains the experimental data analysis and model comparisons.
+`train.py`: 
 
+## Steps to create project
+----------------------------
+## Create bentoml tag for model created
+
+- Train decision Tree classifier usngCreate bentoml tag and tie created model with it.
+  
+```python
+tag = bentoml.sklearn.save_model('decision_tree', dt, 
+                                 custom_objects = {
+                                     "dictVectorizer":dv
+                                 }, signatures={
+                                    "predict_proba":{
+                                        "batchable": True,
+                                        "batch_dim": 0
+                                    }})           
+```
 ## How to run bentoml service
-To serve bentoml locally:
-
 Use the code to run bento locally:
 `bentoml serve service.py:svc`
+                                                                                                                                                                                                                                                                                                                                                                                                                              
 
 ## How to deploy
 Use
@@ -74,7 +99,8 @@ create app by using `heroku create app_name` for example `heroku create decision
 change directory to where the environment in the bentoml file is. To view the path type `bentoml list -o json` in terminal.
 
 ```python
-$ bentoml list -o json[
+$ bentoml list -o json
+[
   {
     "tag": "decision_tree:iugbmmc55opxvshc",
     "path": 
@@ -83,3 +109,12 @@ $ bentoml list -o json[
     "creation_time": "2022-11-06 16:55:35"
   }
 ```
+## Heroku
+`docker tag f547144181b6 registry.heroku.com/decisionclassifier/web`
+
+`docker push registry.heroku.com/decisionclassifier/web`
+
+`heroku container:release web --app decisionclassifier`
+
+## Deplyed ML service.
+To interact with the application, Visit the web address https://decisionclassifier.herokuapp.com/ .
