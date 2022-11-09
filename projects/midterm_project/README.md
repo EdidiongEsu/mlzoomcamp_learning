@@ -1,6 +1,6 @@
-# Midterm project : Predicting Job change of data scientists
+# Midterm project : Predicting churn in marketing
 
-Source Data : https://www.kaggle.com/datasets/arashnic/hr-analytics-job-change-of-data-scientists?taskId=3015
+Source Data : https://www.kaggle.com/datasets/undersc0re/predict-the-churn-risk-rate
 
 ## Description of Data
 -----------------------
@@ -98,7 +98,7 @@ Use `bentoml containerize decision_tree:latest` to containerize and deploy the b
 
 In the terminal, the instructions are shown on how to run serve.
 
-### Docker run serve shows
+### Docker run serve
 RUn the instruction shown after. For example:
 `docker run -it --rm -p 3000:3000 decision_tree:5z7map3agcyfdshc serve --production` where `5z7map3agcyfdshc` is the name of the tag.
 Once it is completed, go to the listed webad=ress (the one you opened earlier). You would notice that the tag is now beside the decison tree name.
@@ -117,18 +117,29 @@ Charts can also be viewed on Locust:
         ![](images/7.%20Locust%20chart.png)
 
 
-## Deploy to heroku
-Download heroku cli through this link:
+### Deploy to heroku
+The web service can be deployed to the web through heroku. If you are not familiar with heroku, you can learn more about them, here: 
+https://www.heroku.com/. Sign up and create an account on the platform to be able to access heroku cli which will make the deployment easier.
 
+### Download Heroku CLI
+Download heroku cli for your OS through this link:
 https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
 
-and then open command line to type `heroku login -i`. Input your credentials. 
-Login to the heroku container by typing
-`heroku container:login` in your terminal.
+    ![](images/7b.%20heroku%20web.png)
+and then open command line to type `heroku login -i`. Input your credentials. For windows, command line prompt interacts well with heroku.
 
-create app by using `heroku create app_name` for example `heroku create decisionclassifier`
+### Login to heroku container
+Login to the heroku container by typing `heroku container:login` in your terminal. AFter login, you will receive a message like below:
 
-change directory to where the environment in the bentoml file is. To view the path type `bentoml list -o json` in terminal.
+        ![](images/8.%20heroku_container.png)
+
+### Create a new app
+Create a new app so that the service can be deployed to it. If you have already created an app, you can skip to the next step. Create app by using `heroku create app_name` for example `heroku create decisionclassifier`.
+
+        ![](images/9.%20heroku_create_app.png)
+
+### Change the working directory
+Change directory to where the environment in the bentoml file is. To view the path type `bentoml list -o json` in terminal.
 
 ```python
 $ bentoml list -o json
@@ -141,12 +152,19 @@ $ bentoml list -o json
     "creation_time": "2022-11-06 16:55:35"
   }
 ```
-## Heroku
-`docker tag f547144181b6 registry.heroku.com/decisionclassifier/web`
+After changing your working environment, move to the Docker Folder to access the docker file. Use `cd env\docker` to change to that directory.
 
-`docker push registry.heroku.com/decisionclassifier/web`
+### Tag your model with Docker
+Execute `docker tag f547144181b6 registry.heroku.com/decisionclassifier/web` where `f547144181b6` is the image ID of the docker image. Run  `docker images` to get the list of your recent docker images and their IDS. The first one will be the most recent image and the third column should contain the image ID.
+            ![](images/9b.%20docker_images.png)
 
-`heroku container:release web --app decisionclassifier`
+### Docker push to web
+Run `docker push registry.heroku.com/decisionclassifier/web` tp push images to the service
+        ![](images/10.%20docker_push.png)
+
+### Release images into Heroku
+Run `heroku container:release web --app decisionclassifier` to releaase images to the web : Heroku.
+        ![](images/11.%20heroku_push.png)
 
 ## Deplyed ML service.
-To interact with the application, Visit the web address https://decisionclassifier.herokuapp.com/ .
+To interact with the application, Visit the web address https://decisionclassifier.herokuapp.com/. (if the name of your created heroku app is decisionclassifier)
