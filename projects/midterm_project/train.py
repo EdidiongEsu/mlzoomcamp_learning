@@ -174,6 +174,8 @@ def create_bentoml():
     print(tag)
     print(f'Model tag created in path: {tag.path}')
 
+    return tag
+
 
 # run bentoml funtion
 create_bentoml()

@@ -17,7 +17,6 @@ svc = bentoml.Service("decision_tree", runners=[model_runner])
 async def classify(application_data):
     vector = dv.transform(application_data)
     prediction = await model_runner.predict_proba.async_run(vector)
-    print(prediction)
     result = prediction[0][1]
     rounded_result = f"{result:.2%}"
     print(result)
