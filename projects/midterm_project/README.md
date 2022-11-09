@@ -59,21 +59,33 @@ tag = bentoml.sklearn.save_model('decision_tree', dt,
                                     }})
                                              
 ```
-- locustfile.py: Contains code for testing high performance of the created ml deployment.
-## Steps to create project
-----------------------------
-## Create bentoml tag for model created
+To replicate the whole project, check the next section.
 
-- Run train.py script to train, create model and create bentoml tag. This can be done using `python train.py` in your terminal which might take around 2/3 minutes to run. Once it is done, the model tag and the path it will be created in will be outputted on your terminal.
+- locustfile.py: Contains code for testing high performance of the created ml deployment.
+  
+## Steps to create (reproduce) project
+---------------------------------------
+### Install all requirements
+Install all the requirements in the requirements.txt file including bentoml
+``` python
+scikit-learn
+pandas
+pydantic
+bentoml
+```
+### Run train script
+- Run train.py script to train, create model and create bentoml tag. This can be done using `python train.py` in your terminal which might take around 2/3 minutes to run. Once it is done, the model tag and the path will be created and its information will be outputted in your terminal.
   ![](images/1a.%20run_trainfile.png)
 
-
-## How to run bentoml service
-Use the code to run bento locally:
-`bentoml serve service.py:svc`
-                                                                                                                                                                                                                                                                                                                                                                                                                              
-
-## How to deploy
+### How to run bentoml service
+Use the code to serve bento locally:
+`bentoml serve service.py:svc` or `bentoml serve service.py:svc --reload` which automatically reloads when the service.py file is saved with additional data/code. 
+Once this is done, this will show on your terminal:
+      ![](images/1ab.%20bento%20serve%20code.png)
+Open your browser to the address as shown in the terminal picture above. Click on try it out and input a sample JSON dictionary to test the serve (check EDA file)
+![](images/1b.%20UI_execute1.png) | ![](images/2.%20UI_execute2.png) | ![](images/2b.%20UI_execute3.png)
+                                                                                                          
+### How to deploy
 Use
 `bentoml build`
 
