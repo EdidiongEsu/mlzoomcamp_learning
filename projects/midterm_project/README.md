@@ -82,8 +82,10 @@ Use the code to serve bento locally:
 `bentoml serve service.py:svc` or `bentoml serve service.py:svc --reload` which automatically reloads when the service.py file is saved with additional data/code. 
 Once this is done, this will show on your terminal:
       ![](images/1ab.%20bento%20serve%20code.png)
-Open your browser to the address as shown in the terminal picture above. Click on try it out and input a sample JSON dictionary to test the serve (check EDA file)
-![](images/1b.%20UI_execute1.png) | ![](images/2.%20UI_execute2.png) | ![](images/2b.%20UI_execute3.png)
+Open your browser to the address as shown in the terminal picture above. Click on try it out and input a sample JSON dictionary to test the serve (check EDA file).
+        ![](images/1b.%20UI_execute1.png)
+        ![](images/2.%20UI_execute2.png)
+        ![](images/2b.%20UI_execute3.png)
                                                                                                           
 ### How to deploy
 Use
