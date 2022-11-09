@@ -43,28 +43,30 @@ It factors in our unique and proprietary predictions of how long a user will rem
 
 ## WHat the main files contain
   -----------------------
-`bentofile.yaml`:This contains the requirements for this project
-`service.py`: This contains the code used to create and serve bentoml. Where service is created.
-`Data Folder`: Contains the data used in the project.
-`midterm_project.ipynb`: This contains the experimental data analysis and model comparisons.
-`train.py`: 
-
+- `bentofile.yaml`:This contains the requirements for this project. 
+- `service.py`: This contains the code used to create and serve bentoml. Where service is created.
+- `Data Folder`: Contains the data used in the project.
+- `midterm_project.ipynb`: This contains the experimental data analysis and model comparisons.
+- `train.py`: Contains code required to engineer data and train model. In the script, there is also the code to create bentoml.
+                    ```python
+                    tag = bentoml.sklearn.save_model('decision_tree', dt, 
+                                                    custom_objects = {
+                                                        "dictVectorizer":dv
+                                                    }, signatures={
+                                                        "predict_proba":{
+                                                            "batchable": True,
+                                                            "batch_dim": 0
+                                                        }})           
+                    ```
+- locustfile.py: Contains code for testing high performance of the created ml deployment.
 ## Steps to create project
 ----------------------------
 ## Create bentoml tag for model created
 
-- Train decision Tree classifier usngCreate bentoml tag and tie created model with it.
-  
-```python
-tag = bentoml.sklearn.save_model('decision_tree', dt, 
-                                 custom_objects = {
-                                     "dictVectorizer":dv
-                                 }, signatures={
-                                    "predict_proba":{
-                                        "batchable": True,
-                                        "batch_dim": 0
-                                    }})           
-```
+- Run train.py script to train, create model and create bentoml tag. This can be done using `python train.py` in your terminal which might take around 2/3 minutes to run. Once it is done, the model tag and the path it will be created in will be outputted on your terminal.
+  ![](images/1a.%20run_trainfile.png)
+
+
 ## How to run bentoml service
 Use the code to run bento locally:
 `bentoml serve service.py:svc`
