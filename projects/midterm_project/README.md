@@ -48,16 +48,17 @@ It factors in our unique and proprietary predictions of how long a user will rem
 - `Data Folder`: Contains the data used in the project.
 - `midterm_project.ipynb`: This contains the experimental data analysis and model comparisons.
 - `train.py`: Contains code required to engineer data and train model. In the script, there is also the code to create bentoml.
-                    ```python
-                    tag = bentoml.sklearn.save_model('decision_tree', dt, 
-                                                    custom_objects = {
-                                                        "dictVectorizer":dv
-                                                    }, signatures={
-                                                        "predict_proba":{
-                                                            "batchable": True,
-                                                            "batch_dim": 0
-                                                        }})           
-                    ```
+``` python
+tag = bentoml.sklearn.save_model('decision_tree', dt, 
+                                custom_objects = {
+                                    "dictVectorizer":dv
+                                }, signatures={
+                                    "predict_proba":{
+                                        "batchable": True,
+                                        "batch_dim": 0
+                                    }})
+                                             
+```
 - locustfile.py: Contains code for testing high performance of the created ml deployment.
 ## Steps to create project
 ----------------------------
