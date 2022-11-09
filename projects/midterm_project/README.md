@@ -46,7 +46,7 @@ It factors in our unique and proprietary predictions of how long a user will rem
 - `bentofile.yaml`:This contains the requirements for this project. 
 - `service.py`: This contains the code used to create and serve bentoml. Where service is created.
 - `Data Folder`: Contains the data used in the project.
-- `midterm_project.ipynb`: This contains the experimental data analysis and model comparisons.
+- `midterm_project_EDA.ipynb`: This contains the experimental data analysis and model comparisons.
 - `train.py`: Contains code required to engineer data and train model. In the script, there is also the code to create bentoml.
 ``` python
 tag = bentoml.sklearn.save_model('decision_tree', dt, 
@@ -61,7 +61,7 @@ tag = bentoml.sklearn.save_model('decision_tree', dt,
 ```
 To replicate the whole project, check the next section.
 
-- locustfile.py: Contains code for testing high performance of the created ml deployment.
+- `locustfile.py`: Contains code for testing high performance of the created ml deployment.
   
 ## Steps to create (reproduce) project
 ---------------------------------------
@@ -87,20 +87,35 @@ Open your browser to the address as shown in the terminal picture above. Click o
         ![](images/2.%20UI_execute2.png)
         ![](images/2b.%20UI_execute3.png)
                                                                                                           
-### How to deploy
-Use
-`bentoml build`
+### Build your bento
+Execute `bentoml build` and a bento will be built instantly. Your terminal will look like:
+    ![](images/2c.%20bentoml%20build.png)
+A new tag is created seperate from the tag created when the train.py file was ran. This is because bento creates a new tahg every instance and seperates model and bento tags.
 
+### Containerize and deploy the prediction service
+Use `bentoml containerize decision_tree:latest` to containerize and deploy the bento production service.
+    ![](images/3.%20terminal_containerize.png)
 
-## deploying the prediction service 
-`bentoml containerize decision_tree:latest`
+In the terminal, the instructions are shown on how to run serve.
 
-### run serve shows next
-`docker run -it --rm -p 3000:3000 decision_tree:iugbmmc55opxvshc serve --production`
+### Docker run serve shows
+RUn the instruction shown after. For example:
+`docker run -it --rm -p 3000:3000 decision_tree:5z7map3agcyfdshc serve --production` where `5z7map3agcyfdshc` is the name of the tag.
+Once it is completed, go to the listed webad=ress (the one you opened earlier). You would notice that the tag is now beside the decison tree name.
+        ![](image/../images/4.%20local_deployed.png)
 
-## High Performance serving: Locust
+You have successfully deployed your model service!
+
+### High Performance serving: Locust 
+Locust helps to simulate influx of users. The user and spawn rate can be adjusted to see how the service would respond. This step is optional but ehlps understand bento as a process better.
+
 Run
-`bentoml serve --production` and `locust -H http://localhost:3000` simultaneously in differently terminals. The former comes first.
+`bentoml serve --production` and `locust -H http://localhost:3000` simultaneously in differently terminals. The former comes first. Input how may Users and the spawn rate (users started per second. An example is 10 users at a spawn rate of 2. 
+        ![](images/5.%20Locust%20spawn.png)
+        ![](images/6.%20Locust%20spawn2.png)
+Charts can also be viewed on Locust:
+        ![](images/7.%20Locust%20chart.png)
+
 
 ## Deploy to heroku
 Download heroku cli through this link:
