@@ -108,7 +108,7 @@ To replicate the whole project, check the next section.
 ## Steps to create (reproduce) project
 ---------------------------------------
 ### 1. Install all requirements
-Install all the requirements in the requirements.txt file including bentoml
+Create a folder and Install all the requirements in the requirements.txt file including bentoml
 ``` python
 scikit-learn
 pandas
