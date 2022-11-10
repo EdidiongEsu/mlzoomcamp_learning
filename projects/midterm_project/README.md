@@ -119,7 +119,7 @@ pydantic
 bentoml
 ```
 ### 2. Run train script
-- Run train.py script to train, create model and create bentoml tag. This can be done using `python train.py` in your terminal which might take around 2/3 minutes to run. Once it is done, the model tag and the path will be created and its information will be outputted in your terminal.
+Run train.py script to train, create model and create bentoml tag. This can be done using `python train.py` in your terminal which might take around 2/3 minutes to run. Once it is done, the model tag and the path will be created and its information will be outputted in your terminal.
                                 ![](images/1a.%20run_trainfile.png)
 
 ### 3. How to run bentoml service
@@ -169,18 +169,15 @@ https://www.heroku.com/. Sign up and create an account on the platform to be abl
 ### 10. Download Heroku CLI
 Download heroku cli for your OS through this link:
 https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
-
-    ![](images/7b.%20heroku%20web.png)
+        ![](images/7b.%20heroku%20web.png)
 and then open command line to type `heroku login -i`. Input your credentials. For windows, command line prompt interacts well with heroku.
 
 ### 11. Login to heroku container
 Login to the heroku container by typing `heroku container:login` in your terminal. AFter login, you will receive a message like below:
-
-        ![](images/8.%20heroku_container.png)
+                ![](images/8.%20heroku_container.png)
 
 ### 12. Create a new app
 Create a new app so that the service can be deployed to it. If you have already created an app, you can skip to the next step. Create app by using `heroku create app_name` for example `heroku create decisionclassifier`.
-
         ![](images/9.%20heroku_create_app.png)
 
 ### 13. Change the working directory
