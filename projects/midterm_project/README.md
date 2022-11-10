@@ -41,7 +41,45 @@ It factors in our unique and proprietary predictions of how long a user will rem
 | feedback                     | Represents the feedback provided by a customer                           |
 | churn_risk score             | Represents the churn risk score that 0 or 1                              |
 
-## WHat the main files contain
+## Aim
+Train multiple models to predict the churn of customers and pick the best model (taking into consideration the evaluation metrics). Deploy the machine learning service to the web.
+
+## Result
+The service was successfully deployed and can be viewed through this link: https://decisionclassifier.herokuapp.com/.
+                        ![](images/12.%20heroku_app.png)
+
+You can test the service by clicking on post and iputting the data:
+
+``` python
+                {
+                "age": 12,
+                "gender": "m",
+                "region_category": "missing",
+                "membership_category": "silver_membership",
+                "joined_through_referral": "no",
+                "preferred_offer_types": "credit/debit_card_offers",
+                "medium_of_operation": "smartphone",
+                "internet_option": "fiber_optic",
+                "last_visit_time": "13:38:19",
+                "days_since_last_login": 24.0,
+                "avg_time_spent": 121.82,
+                "avg_transaction_value": 30385.88,
+                "avg_frequency_login_days": 25.0,
+                "points_in_wallet": 698.62,
+                "used_special_discount": "no",
+                "offer_application_preference": "yes",
+                "past_complaint": "yes",
+                "complaint_status": "solved",
+                "feedback": "too_many_ads"
+                }
+
+```
+It will look this:
+        ![](images/14.%20result1.png
+
+Click on execute to show the result.
+
+## What the main files contain
   -----------------------
 - `bentofile.yaml`:This contains the requirements for this project. 
 - `service.py`: This contains the code used to create and serve bentoml. Where service is created.
