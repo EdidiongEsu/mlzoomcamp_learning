@@ -12,7 +12,7 @@ Historical purchase data among other information
 It factors in our unique and proprietary predictions of how long a user will remain a customer. This score is updated every day for all users who have a minimum of one conversion. 
 
 ## Features
-------------
+----------------
 
 | Column name                  | Description                                                              |
 | ---------------------------- | ------------------------------------------------------------------------ |
@@ -43,6 +43,10 @@ It factors in our unique and proprietary predictions of how long a user will rem
 
 ## Aim
 Train multiple models to predict the churn of customers and pick the best model (taking into consideration the evaluation metrics). Deploy the machine learning service to the web.
+
+## Approach
+Machine learning service was bundled with bentoml and deployed to heroku.
+                        ![](images/15.%20heroku_bento.png)
 
 ## Result
 The service was successfully deployed and can be viewed through this link: https://decisionclassifier.herokuapp.com/.
@@ -113,7 +117,7 @@ bentoml
 ```
 ### 2. Run train script
 - Run train.py script to train, create model and create bentoml tag. This can be done using `python train.py` in your terminal which might take around 2/3 minutes to run. Once it is done, the model tag and the path will be created and its information will be outputted in your terminal.
-  ![](images/1a.%20run_trainfile.png)
+                                ![](images/1a.%20run_trainfile.png)
 
 ### 3. How to run bentoml service
 Use the code to serve bento locally:
