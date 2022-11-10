@@ -75,7 +75,7 @@ You can test the service by clicking on post and iputting the data:
 
 ```
 It will look this:
-        ![](images/14.%20result1.png
+        ![](images/14.%20result1.png)
 
 Click on execute to show the result.
 
