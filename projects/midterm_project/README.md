@@ -103,7 +103,7 @@ To replicate the whole project, check the next section.
   
 ## Steps to create (reproduce) project
 ---------------------------------------
-### Install all requirements
+### 1. Install all requirements
 Install all the requirements in the requirements.txt file including bentoml
 ``` python
 scikit-learn
@@ -111,11 +111,11 @@ pandas
 pydantic
 bentoml
 ```
-### Run train script
+### 2. Run train script
 - Run train.py script to train, create model and create bentoml tag. This can be done using `python train.py` in your terminal which might take around 2/3 minutes to run. Once it is done, the model tag and the path will be created and its information will be outputted in your terminal.
   ![](images/1a.%20run_trainfile.png)
 
-### How to run bentoml service
+### 3. How to run bentoml service
 Use the code to serve bento locally:
 `bentoml serve service.py:svc` or `bentoml serve service.py:svc --reload` which automatically reloads when the service.py file is saved with additional data/code. 
 Once this is done, this will show on your terminal:
@@ -125,18 +125,18 @@ Open your browser to the address as shown in the terminal picture above. Click o
         ![](images/2.%20UI_execute2.png)
         ![](images/2b.%20UI_execute3.png)
                                                                                                           
-### Build your bento
+### 4. Build your bento
 Execute `bentoml build` and a bento will be built instantly. Your terminal will look like:
     ![](images/2c.%20bentoml%20build.png)
 A new tag is created seperate from the tag created when the train.py file was ran. This is because bento creates a new tahg every instance and seperates model and bento tags.
 
-### Containerize and deploy the prediction service
+### 5. Containerize and deploy the prediction service
 Use `bentoml containerize decision_tree:latest` to containerize and deploy the bento production service.
     ![](images/3.%20terminal_containerize.png)
 
 In the terminal, the instructions are shown on how to run serve.
 
-### Docker run serve
+### 6. Docker run serve
 RUn the instruction shown after. For example:
 `docker run -it --rm -p 3000:3000 decision_tree:5z7map3agcyfdshc serve --production` where `5z7map3agcyfdshc` is the name of the tag.
 Once it is completed, go to the listed webad=ress (the one you opened earlier). You would notice that the tag is now beside the decison tree name.
@@ -144,7 +144,7 @@ Once it is completed, go to the listed webad=ress (the one you opened earlier). 
 
 You have successfully deployed your model service!
 
-### High Performance serving: Locust 
+### 7. High Performance serving: Locust 
 Locust helps to simulate influx of users. The user and spawn rate can be adjusted to see how the service would respond. This step is optional but ehlps understand bento as a process better.
 
 Run
@@ -155,28 +155,28 @@ Charts can also be viewed on Locust:
         ![](images/7.%20Locust%20chart.png)
 
 
-### Deploy to heroku
+### 9. Deploy to heroku
 The web service can be deployed to the web through heroku. If you are not familiar with heroku, you can learn more about them, here: 
 https://www.heroku.com/. Sign up and create an account on the platform to be able to access heroku cli which will make the deployment easier.
 
-### Download Heroku CLI
+### 10. Download Heroku CLI
 Download heroku cli for your OS through this link:
 https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
 
     ![](images/7b.%20heroku%20web.png)
 and then open command line to type `heroku login -i`. Input your credentials. For windows, command line prompt interacts well with heroku.
 
-### Login to heroku container
+### 11. Login to heroku container
 Login to the heroku container by typing `heroku container:login` in your terminal. AFter login, you will receive a message like below:
 
         ![](images/8.%20heroku_container.png)
 
-### Create a new app
+### 12. Create a new app
 Create a new app so that the service can be deployed to it. If you have already created an app, you can skip to the next step. Create app by using `heroku create app_name` for example `heroku create decisionclassifier`.
 
         ![](images/9.%20heroku_create_app.png)
 
-### Change the working directory
+### 13. Change the working directory
 Change directory to where the environment in the bentoml file is. To view the path type `bentoml list -o json` in terminal.
 
 ```python
@@ -192,19 +192,19 @@ $ bentoml list -o json
 ```
 After changing your working environment, move to the Docker Folder to access the docker file. Use `cd env\docker` to change to that directory.
 
-### Tag your model with Docker
+### 14. Tag your model with Docker
 Execute `docker tag f547144181b6 registry.heroku.com/decisionclassifier/web` where `f547144181b6` is the image ID of the docker image. Run  `docker images` to get the list of your recent docker images and their IDS. The first one will be the most recent image and the third column should contain the image ID.
             ![](images/9b.%20docker_images.png)
 
-### Docker push to web
+### 15. Docker push to web
 Run `docker push registry.heroku.com/decisionclassifier/web` tp push images to the service
         ![](images/10.%20docker_push.png)
 
-### Release images into Heroku
+### 16. Release images into Heroku
 Run `heroku container:release web --app decisionclassifier` to releaase images to the web : Heroku.
         ![](images/11.%20heroku_push.png)
 
-## Deplyed ML service.
+## 17. Deploy ML service.
 To interact with the application, Visit the web address https://decisionclassifier.herokuapp.com/. (if the name of your created heroku app is decisionclassifier)
         ![](images/12.%20heroku_app.png)
         ![](images/13.%20heroku_app2.png)
