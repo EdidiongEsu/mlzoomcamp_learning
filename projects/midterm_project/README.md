@@ -209,6 +209,6 @@ Run `heroku container:release web --app decisionclassifier` to releaase images t
         ![](images/11.%20heroku_push.png)
 
 ## 17. Deploy ML service.
-To interact with the application, Visit the web address https://decisionclassifier.herokuapp.com/. (if the name of your created heroku app is decisionclassifier)
+To interact with the application, Visit the web address https://{app_name}.herokuapp.com/.
         ![](images/12.%20heroku_app.png)
         ![](images/13.%20heroku_app2.png)
