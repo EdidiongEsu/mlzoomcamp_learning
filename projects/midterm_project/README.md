@@ -46,6 +46,7 @@ Train multiple models to predict the churn of customers and pick the best model 
 
 ## Approach
 Machine learning service was bundled with bentoml and deployed to heroku.
+                        
                         ![](images/15.%20heroku_bento.png)
 
 ## Result
