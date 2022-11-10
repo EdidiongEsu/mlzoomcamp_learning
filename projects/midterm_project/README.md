@@ -170,6 +170,7 @@ https://www.heroku.com/. Sign up and create an account on the platform to be abl
 Download heroku cli for your OS through this link:
 https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
         ![](images/7b.%20heroku%20web.png)
+
 and then open command line to type `heroku login -i`. Input your credentials. For windows, command line prompt interacts well with heroku.
 
 ### 11. Login to heroku container
