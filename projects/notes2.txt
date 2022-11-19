@@ -1,0 +1,2 @@
+Three models - Logistic Regression, Decision Tree, and Xgboost were trained and evaluated. For each of them, parameters were tuned and trained. The decision tree was chosen as it had the best roc_auc (Area under the receiver operator curve) score. For the decision tree, a max_depth
+
