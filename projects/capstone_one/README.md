@@ -1,7 +1,10 @@
 # Project - Car Image classification
 For the full code and repository: check here:
 
+hI
+
 This was a test area. 
+
 Link to Original dataset: https://www.kaggle.com/datasets/kshitij192/cars-image-dataset
 
 ## Project description
