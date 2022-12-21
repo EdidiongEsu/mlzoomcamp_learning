@@ -1,7 +1,5 @@
 # Project - Car Image classification
-For the full code and repository: check here:
-
-hI
+For the full code and repository, check here: https://github.com/EdidiongEsu/mlzoomcamp_capstone_one
 
 This was a test area. 
 
